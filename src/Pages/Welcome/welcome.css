@@ -1,0 +1,10 @@
+.carousel-img {
+    max-height: 50vh;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.carousel-img:hover {
+    border: 2px solid #ffc107;
+
+}
