@@ -6,11 +6,9 @@ import {
   Switch,
 } from "react-router-dom";
 
-import WelcomePage from "./Pages/Welcome";
+import WelcomePage from "./Pages/Welcome/Welcome";
 import CGFooter from "./Pages/Footer";
 import Navbar from "./Components/Navbar/Navbar";
-import { MoviesListRoute } from "./routes";
-import Movies from "./Pages/Movies";
 
 const App = () => {
   return (
@@ -29,7 +27,6 @@ const Main = () => {
     <main>
       <Switch>
         <Route path="/" exact={true} component={WelcomePage} />
-        <Route path={MoviesListRoute} exact={true} component={Movies} />
         <Redirect to="/" />
       </Switch>
     </main>

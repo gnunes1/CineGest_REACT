@@ -1,2 +1,3 @@
 export const Welcome = "/";
-export const MoviesListRoute = "/movies";
+export const Login = "/";
+export const Signup = "/";
