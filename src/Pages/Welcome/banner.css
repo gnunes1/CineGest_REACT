@@ -14,3 +14,7 @@
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
+
+.row.banner h2 {
+    font-weight: 200;
+}

@@ -8,8 +8,5 @@ import "./assets/fonts/inter_web/inter.css";
 import "./index.css";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>,
-    document.getElementById("root"),
+    <App/>, document.getElementById("root"),
 );

@@ -1,6 +1,7 @@
 .movieList-title {
     margin-left: 3vw;
     margin-top: 3vh;
+    font-weight: 200;
 }
 
 .movieList-img {
@@ -12,5 +13,8 @@
 
 .movieList-img:hover {
     border: 2px solid #ffc107;
+}
 
+.noMoviesInList {
+    font-weight: 300;
 }

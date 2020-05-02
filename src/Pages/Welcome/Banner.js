@@ -13,7 +13,7 @@ function Banner() {
             </Col>
             <Col className="banner-border mt-4" md={4}>
                 <Container className="banner">
-                    <h2>Todos os filmes recentes próximos de sí</h2>
+                    <h2>Todos os filmes recentes perto de sí</h2>
                     <Button className="mt-2" variant="warning" size="lg">
                         Inscreva-se
                     </Button>
@@ -21,11 +21,7 @@ function Banner() {
             </Col>
             <Col className="mt-4">
                 <Container className="banner">
-                    <h2>Fluid jumbotron</h2>
-                    <p>
-                        This is a modified jumbotron that occupies the entire horizontal
-                        space of its parent.
-                    </p>
+                    <h2 className="mt-2">As estreias mais recentes</h2>
                 </Container>
             </Col>
         </Row>

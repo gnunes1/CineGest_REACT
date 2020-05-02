@@ -1,3 +1,6 @@
-export const Welcome = "/";
-export const Login = "/";
-export const Signup = "/";
+export const ROUTES = {
+    Welcome: "/",
+    Login: "/",
+    Signup: "/",
+    Movie: (id) => `/movie/${id}`,
+}

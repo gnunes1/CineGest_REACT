@@ -1,13 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Login, Signup, Welcome} from "../../routes";
-import "./navbar.css";
 import {Button, Navbar} from "react-bootstrap";
+import {ROUTES} from "../../routes";
+
+import "./navbar.css";
 
 const CGNavbar = () => (
         <Navbar bg="dark" variant="dark" className="justify-content-between" expand="lg" sticky="top">
             <Navbar.Brand>
-                <Link to={Welcome} className="text-decoration-none">
+                <Link to={ROUTES.Welcome} className="text-decoration-none">
                     <svg width="30" height="30" className="d-inline-block align-top text-white" viewBox="0 0 940 940">
                         <path
                             d="M900.199 0h-46.514c-11.046 0-20 8.954-20 20v24.89c0 11.045-8.954 20-20 20h-43.37c-11.046 0-20-8.955-20-20V20c0-11.046-8.953-20-20-20H208.121c-11.046 0-20 8.954-20 20v24.89c0 11.045-8.954 20-20 20h-43.37c-11.046 0-20-8.955-20-20V20c0-11.046-8.954-20-20-20h-44.95c-11.046 0-20 8.954-20 20v900c0 11.046 8.954 20 20 20h44.95c11.046 0 20-8.954 20-20v-18.285c0-11.046 8.954-20 20-20h43.37c11.046 0 20 8.954 20 20V920c0 11.046 8.954 20 20 20h522.194c11.047 0 20-8.954 20-20v-18.285c0-11.046 8.954-20 20-20h43.37c11.046 0 20 8.954 20 20V920c0 11.046 8.954 20 20 20h46.514c11.046 0 20-8.954 20-20V20c0-11.045-8.954-20-20-20zM188.121 765.369c0 11.046-8.954 20-20 20h-43.37c-11.046 0-20-8.954-20-20v-43.37c0-11.045 8.954-20 20-20h43.37c11.046 0 20 8.955 20 20v43.37zm0-179.716c0 11.045-8.954 20-20 20h-43.37c-11.046 0-20-8.955-20-20v-43.371c0-11.045 8.954-20 20-20h43.37c11.046 0 20 8.955 20 20v43.371zm0-179.717c0 11.047-8.954 20-20 20h-43.37c-11.046 0-20-8.953-20-20v-43.37c0-11.046 8.954-20 20-20h43.37c11.046 0 20 8.954 20 20v43.37zm0-179.716c0 11.046-8.954 20-20 20h-43.37c-11.046 0-20-8.954-20-20v-43.37c0-11.045 8.954-20 20-20h43.37c11.046 0 20 8.955 20 20v43.37zm475.715 608.047c0 11.047-8.954 20-20 20H296.164c-11.046 0-20-8.953-20-20V673.545c0-11.046 8.954-20 20-20h347.672c11.046 0 20 8.954 20 20v160.722zm0-283.906c0 11.046-8.954 20-20 20H296.164c-11.046 0-20-8.954-20-20V389.639c0-11.045 8.954-20 20-20h347.672c11.046 0 20 8.955 20 20v160.722zm0-283.907c0 11.046-8.954 20-20 20H296.164c-11.046 0-20-8.954-20-20V105.732c0-11.045 8.954-20 20-20h347.672c11.046 0 20 8.955 20 20v160.722zm169.85 498.915c0 11.046-8.954 20-20 20h-43.37c-11.046 0-20-8.954-20-20v-43.37c0-11.045 8.954-20 20-20h43.37c11.046 0 20 8.955 20 20v43.37zm0-179.716c0 11.045-8.954 20-20 20h-43.37c-11.046 0-20-8.955-20-20v-43.371c0-11.045 8.954-20 20-20h43.37c11.046 0 20 8.955 20 20v43.371zm0-179.717c0 11.047-8.954 20-20 20h-43.37c-11.046 0-20-8.953-20-20v-43.37c0-11.046 8.954-20 20-20h43.37c11.046 0 20 8.954 20 20v43.37zm0-179.716c0 11.046-8.954 20-20 20h-43.37c-11.046 0-20-8.954-20-20v-43.37c0-11.045 8.954-20 20-20h43.37c11.046 0 20 8.955 20 20v43.37z"
@@ -20,8 +21,8 @@ const CGNavbar = () => (
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <div className="ml-auto">
-                    <Button variant="outline-warning" as={Link} to={Signup}>Registar</Button>
-                    <Link to={Login} className="text-decoration-none ml-3 align-middle">INICIAR SESSÃO</Link>
+                    <Button variant="outline-warning" as={Link} to={ROUTES.Signup}>Registar</Button>
+                    <Link to={ROUTES.Login} className="text-decoration-none ml-3 align-middle">INICIAR SESSÃO</Link>
                 </div>
             </Navbar.Collapse>
         </Navbar>
