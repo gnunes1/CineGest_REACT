@@ -1,11 +1,11 @@
-import React from "react";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import React from 'react'
+import {Button, Container, Row, Col} from 'react-bootstrap'
 
-import "./banner.css";
+import './banner.css'
 
 function Banner() {
     return (
-        <Row className="banner">
+        <Row className="text-center mx-0">
             <Col className="mt-4" md={4}>
                 <Container className="banner">
                     <h2>Compre aqui o seu bilhete para assistir no nosso cinema local</h2>
@@ -25,7 +25,7 @@ function Banner() {
                 </Container>
             </Col>
         </Row>
-    );
+    )
 }
 
-export default Banner;
+export default Banner
