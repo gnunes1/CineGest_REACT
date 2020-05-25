@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
-import MovieItem from "./MovieItem";
+import MoviesItem from "./MoviesItem";
 import CGCarousel from "../../../Components/CGCarousel.js";
 
-const MovieList = React.memo(() => {
+const MoviesList = React.memo(() => { //so e chamado quando necessario; popula os slides dos filmes
     const [data, setData] = useState([])
     useEffect(() => {
         setData(list)
@@ -22,7 +22,7 @@ const MovieList = React.memo(() => {
         <React.Fragment>
             <CGCarousel responsive={responsive} autoPlay={false} draggable={false}>
                 {data && data.map((item) => (
-                    <MovieItem
+                    <MoviesItem
                         key={item.id}
                         id={item.id}
                         title={item.title}
@@ -36,7 +36,7 @@ const MovieList = React.memo(() => {
         </React.Fragment>);
 });
 
-export default MovieList;
+export default MoviesList;
 
 const list = [
     {
@@ -54,7 +54,7 @@ const list = [
     {
         id: "3",
         title: "c",
-        src: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88314/91406/Blade-Runner-2049-Final-Style-Poster-buy-original-movie-posters-at-starstills__83407.1519904794.jpg?c=2&imbypass=on",
+        src: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88314/91406/Blade-Runner-2049-Final-Style-Poster-buy-original-movie-posters-at-starstills__83407.1519904794.jpg",
         alt: "c"
     },
     {

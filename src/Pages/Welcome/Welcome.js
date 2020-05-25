@@ -7,7 +7,7 @@ import "./welcome.css";
 import "react-multi-carousel/lib/styles.css";
 import Highlights from "./Components/Highlights";
 
-const WelcomePage = () => {
+const WelcomePage = () => { //pagina principal
     return (
         <React.Fragment>
             <h3 className="title-carousel mt-4 text-center">EM DESTAQUE</h3>

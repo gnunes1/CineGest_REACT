@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {ROUTES} from "../../../routes";
 
-const HighlightItem = (props) => {
+const HighlightItem = (props) => { //retorna um filme para inserir no sldie dos filmes em destaque
 
     return (
         <div className="text-center">

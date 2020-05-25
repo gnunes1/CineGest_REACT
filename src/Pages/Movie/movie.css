@@ -1,0 +1,7 @@
+.container.movieContainer {
+    margin-left: 7%;
+}
+
+.row.movieDetails {
+    flex-wrap: inherit;
+}

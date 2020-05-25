@@ -9,12 +9,12 @@ import {
 import WelcomePage from "./Pages/Welcome/Welcome";
 import MoviePage from "./Pages/Movie/Movie";
 import CGFooter from "./Pages/Footer";
-import Navbar from "./Components/Navbar/Navbar";
+import CGNavbar from "./Components/Navbar/CGNavbar";
 
 const App = () => {
     return (
         <Router>
-            <Navbar/>
+            <CGNavbar/>
             <Main/>
             <Footer/>
         </Router>

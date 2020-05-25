@@ -3,10 +3,10 @@ import {Link} from "react-router-dom";
 import {Button, Navbar} from "react-bootstrap";
 import {ROUTES} from "../../routes";
 
-import "./navbar.css";
+import "./cgNavbar.css";
 
 const CGNavbar = () => (
-        <Navbar bg="dark" variant="dark" className="justify-content-between" expand="lg" sticky="top">
+        <Navbar bg="dark" variant="dark" className="justify-content-between" expand="lg" sticky="top" id="navbar">
             <Navbar.Brand>
                 <Link to={ROUTES.Welcome} className="text-decoration-none">
                     <svg width="30" height="30" className="d-inline-block align-top text-white" viewBox="0 0 940 940">
@@ -22,7 +22,7 @@ const CGNavbar = () => (
             <Navbar.Collapse id="basic-navbar-nav">
                 <div className="ml-auto">
                     <Button variant="outline-warning" as={Link} to={ROUTES.Signup}>Registar</Button>
-                    <Link to={ROUTES.Login} className="text-decoration-none ml-3 align-middle">INICIAR SESSÃO</Link>
+                    <Button variant="outline-light ml-3" as={Link} to={ROUTES.Login}>INICIAR SESSÃO</Button>
                 </div>
             </Navbar.Collapse>
         </Navbar>

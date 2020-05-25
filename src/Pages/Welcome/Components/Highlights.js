@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import HighlightItem from "./HighlightItem";
 import CGCarousel from "../../../Components/CGCarousel.js";
 
-const Highlights = React.memo(() => {
+const Highlights = React.memo(() => { //so e chamado quando necessario; popula os slides dos filmes em destaque
     const [data, setData] = useState([])
     useEffect(() => {
         setData(list)
@@ -52,7 +52,7 @@ const list = [
     {
         id: "2",
         title: "Blade Runner 2049",
-        src: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88314/91406/Blade-Runner-2049-Final-Style-Poster-buy-original-movie-posters-at-starstills__83407.1519904794.jpg?c=2&imbypass=on",
+        src: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88314/91406/Blade-Runner-2049-Final-Style-Poster-buy-original-movie-posters-at-starstills__83407.1519904794.jpg",
         alt: "Blade Runner 2049",
         dateBegin: "05-05-20",
         dateEnd: "31-12-20"

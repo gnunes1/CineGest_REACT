@@ -1,0 +1,7 @@
+.movieImg {
+    max-height: 50vh;
+}
+
+.row.movieData {
+    max-width: fit-content;
+}

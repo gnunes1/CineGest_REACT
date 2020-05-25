@@ -1,0 +1,7 @@
+#movieTable {
+    color: inherit;
+}
+
+.movieDetails .table-responsive {
+    height: 70vh;
+}

@@ -3,7 +3,7 @@ import {Button, Container, Row, Col} from 'react-bootstrap'
 
 import './banner.css'
 
-function Banner() {
+function Banner() { //pagina que contem o conteudo de publicidade ao site
     return (
         <Row className="text-center mx-0">
             <Col className="mt-4" md={4}>

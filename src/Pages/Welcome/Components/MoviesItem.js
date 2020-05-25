@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {ROUTES} from "../../../routes";
 
-const HighlightItem = (props) => {
+const MoviesItem = (props) => { //retorna um filme para inserir no slide dos filmes
 
     return (
         <div className="text-center">
@@ -17,4 +17,4 @@ const HighlightItem = (props) => {
         </div>
     );
 }
-export default HighlightItem;
+export default MoviesItem;
