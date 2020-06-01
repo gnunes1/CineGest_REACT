@@ -1,5 +1,7 @@
 import React from 'react'
 import {Button, Container, Row, Col} from 'react-bootstrap'
+import {Link} from "react-router-dom";
+import {ROUTES} from "../../routes";
 
 import './banner.css'
 
@@ -14,7 +16,7 @@ function Banner() { //pagina que contem o conteudo de publicidade ao site
             <Col className="banner-border mt-4" md={4}>
                 <Container className="banner">
                     <h2>Todos os filmes recentes perto de sí</h2>
-                    <Button className="mt-2" variant="warning" size="lg">
+                    <Button className="mt-2" variant="warning" size="lg" as={Link} to={ROUTES.Signup}>
                         Inscreva-se
                     </Button>
                 </Container>

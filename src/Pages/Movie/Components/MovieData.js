@@ -4,10 +4,11 @@ import {Button, Row} from "react-bootstrap";
 import "./movieData.css"
 
 //Dados do filme
-const MovieData = () => {
-    const [data, setData] = useState([])
-    useEffect(() => { //on componentUpdate
-        setData(list);
+const MovieData = (props) => {
+
+    const [data, setData] = useState([]);
+    useEffect(() => { //on create
+        setData(props);
     }, [])
 
     return (
@@ -15,28 +16,25 @@ const MovieData = () => {
             <Row>
                 <img
                     className="movieImg"
-                    src="https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88314/91406/Blade-Runner-2049-Final-Style-Poster-buy-original-movie-posters-at-starstills__83407.1519904794.jpg"
-                    alt="a"
+                    src={props.image}
+                    alt={props.name}
                 />
             </Row>
             <Row className="text-center">
                 <Button variant="warning" block>Comprar</Button>
             </Row>
             <Row className="pt-4 movieData">
-                <p className="w-100">Descrição: Blade Runner K's discovery of a long-buried secret leads him
-                    to
-                    track down former
-                    Blade
-                    Runner Rick Deckard, who's been missing for thirty years.
-                </p>
-                <p className="w-100">Géneros: Ação; Drama; Mistério; Ficção científica; Suspense</p>
-                <p className="w-100">Duração:</p>
-                <p className="w-100">Idade mínima:</p>
+                <p className="font-weight-bold">Descrição:</p>
+                <p className="w-100">{props.description}</p>
+                <p className="font-weight-bold">Géneros:</p>
+                <p className="w-100">{props.genres}</p>
+                <p className="font-weight-bold">Duração:</p>
+                <p className="w-100">{props.duration} min</p>
+                <p className="font-weight-bold">Idade mínima:</p>
+                <p className="w-100">{props.minAge}</p>
             </Row>
         </React.Fragment>
     );
 };
 
 export default MovieData;
-
-const list = [{}]

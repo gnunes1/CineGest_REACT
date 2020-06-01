@@ -2,23 +2,38 @@ import React from "react";
 
 import Banner from "./Banner";
 import Movies from "./Movies";
-
-import "./welcome.css";
-import "react-multi-carousel/lib/styles.css";
 import Highlights from "./Components/Highlights";
+import CGFooter from "../Footer/Footer";
+import CGNavbar from "../../Components/Navbar/CGNavbar";
+
+import {Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {ROUTES} from "../../routes";
+
+import "react-multi-carousel/lib/styles.css";
 
 const WelcomePage = () => { //pagina principal
     return (
         <React.Fragment>
-            <h3 className="title-carousel mt-4 text-center">EM DESTAQUE</h3>
+            <CGNavbar user={userButtons} color={"dark"}/>
+
+            <h3 className="mt-4 text-center">EM DESTAQUE</h3>
 
             <Highlights/>
 
             <Banner/>
             <Movies/>
+
+            <CGFooter/>
         </React.Fragment>
     );
 };
 
 export default WelcomePage;
 
+const userButtons = (
+    <React.Fragment>
+        <Button variant="outline-warning" as={Link} to={ROUTES.Signup}>Registar</Button>
+        <Button variant="outline-light ml-3" as={Link} to={ROUTES.Login}>INICIAR SESSÃO</Button>
+    </React.Fragment>
+);

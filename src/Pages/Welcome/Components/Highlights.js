@@ -2,41 +2,58 @@ import React, {useEffect, useState} from 'react';
 
 import HighlightItem from "./HighlightItem";
 import CGCarousel from "../../../Components/CGCarousel.js";
+import "./Highlights.css"
 
 const Highlights = React.memo(() => { //so e chamado quando necessario; popula os slides dos filmes em destaque
-    const [data, setData] = useState([])
-    useEffect(() => {
-        setData(list)
-    }, [])
+        const [data, setData] = useState([]);
+        const [error, setError] = useState(false);
+        const [isLoaded, setIsLoaded] = useState(false);
+        
+        useEffect(() => {
+            fetch(process.env.REACT_APP_API_URL + "/api/Movies/Highlights").then(res => res.json())
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        setData(result);
+                    },
+                    (error) => {
+                        setIsLoaded(true);
+                        setError(error);
+                    }
+                ).catch(reason => {
+                    console.log(reason);
+                }
+            );
 
+        }, [])
 
-    if (data.length === 0) {
-        return <React.Fragment>
-            <div className="text-center align-content-center" style={{height: "50vh", display: "grid"}}>
-                <h2 className="noHighlights">{"Sem filmes em destaque"}</h2>
-            </div>
-        </React.Fragment>
+        if (error || data.length === 0) { //não existem dados ou deu erro no fetch
+            return <React.Fragment>
+                <div className="text-center align-content-center" id="noHighlights">
+                    <h2 className="noHighlights">{"Sem filmes em destaque"}</h2>
+                </div>
+            </React.Fragment>
+        } else { //existem dados
+            return (
+                <React.Fragment>
+                    <CGCarousel responsive={responsive} infinite={true} autoPlay={true}
+                                removeArrowOnDeviceType={["superLargeDesktop", "desktop", "tablet", "mobile",]}
+                                draggable={false}>
+                        {data && data.map((item) => (
+                            <HighlightItem
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                image={item.image}
+                                alt={item.name}
+                            />
+                        ))}
+                    </CGCarousel>
+                </React.Fragment>
+            );
+        }
     }
-
-    return (
-        <React.Fragment>
-            <CGCarousel responsive={responsive} infinite={true} autoPlay={true}
-                        removeArrowOnDeviceType={["superLargeDesktop", "desktop", "tablet", "mobile",]}
-                        draggable={false}>
-                {data && data.map((item) => (
-                    <HighlightItem
-                        key={item.id}
-                        id={item.id}
-                        title={item.title}
-                        src={item.src}
-                        alt={item.alt}
-                        dateBegin={item.dateBegin}
-                        dateEnd={item.dateEnd}
-                    />
-                ))}
-            </CGCarousel>
-        </React.Fragment>);
-});
+);
 
 export default Highlights;
 

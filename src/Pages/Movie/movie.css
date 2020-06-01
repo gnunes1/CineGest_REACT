@@ -1,7 +1,4 @@
-.container.movieContainer {
-    margin-left: 7%;
-}
-
-.row.movieDetails {
-    flex-wrap: inherit;
+#movieTable {
+    height: 73vh;
+    overflow-y: auto;
 }

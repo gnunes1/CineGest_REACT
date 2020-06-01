@@ -1,0 +1,8 @@
+.noHighlights {
+    font-weight: 300;
+}
+
+#noHighlights {
+    height: 50vh;
+    display: grid;
+}

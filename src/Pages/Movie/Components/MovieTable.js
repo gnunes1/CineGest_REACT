@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Table} from "react-bootstrap";
+import {Col, Table} from "react-bootstrap";
 import MovieTableItem from "./MovieTableItem";
 
-import "./movieTable.css"
-
-const MovieTable = React.memo(() => { // tabela com as sessões do filme
-    const [data, setData] = useState([])
-    useEffect(() => { //on componentUpdate
-        setData(list);
+const MovieTable = (props) => { // tabela com as sessões do filme
+    const [data, setData] = useState([]);
+    useEffect(() => { //on create
+        setData(props.movie);
     }, [])
 
     return (
-        <Table responsive id="movieTable">
+        <Table responsive striped={true} className="text-white">
             <thead>
             <tr>
                 <th className="align-middle text-center">Comprar</th>
@@ -39,128 +37,6 @@ const MovieTable = React.memo(() => { // tabela com as sessões do filme
             </tbody>
         </Table>
     );
-});
+};
 
 export default MovieTable;
-
-const list = [{
-    id: "1",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "2",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "3",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "4",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "5",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "6",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "64",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "63",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "62",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "61",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "60",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "69",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "68",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "67",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-}, {
-    id: "66",
-    cinema: "Anfiteatro de Tomar",
-    localizacao: "Rua principal",
-    data: "20-1-19",
-    inicio: "15:43",
-    fim: "16:30",
-    lugares: "2/50"
-},];

@@ -6,3 +6,7 @@
     margin: auto;
     display: flex;
 }
+
+.text-decoration-none {
+    color: inherit;
+}
