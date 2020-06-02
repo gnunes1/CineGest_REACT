@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Form} from "react-bootstrap";
-import DatePicker from "../../../Components/DatePickerCG";
+import DatePickerCG from "../../../Components/DatePickerCG";
 
 const MovieSearch = () => { //opcoes para filtrar as sessões dos filmes
     return (
@@ -22,7 +22,7 @@ const MovieSearch = () => { //opcoes para filtrar as sessões dos filmes
                 </Form.Group>
                 <Form.Group as={Col}>
                     <Form.Label>Data</Form.Label>
-                    <DatePicker todayButton={"Hoje"}/>
+                    <DatePickerCG todayButton={"Hoje"}/>
                 </Form.Group>
             </Form.Row>
         </Form>

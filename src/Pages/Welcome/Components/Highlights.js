@@ -8,9 +8,10 @@ const Highlights = React.memo(() => { //so e chamado quando necessario; popula o
         const [data, setData] = useState([]);
         const [error, setError] = useState(false);
         const [isLoaded, setIsLoaded] = useState(false);
-        
+
         useEffect(() => {
-            fetch(process.env.REACT_APP_API_URL + "/api/Movies/Highlights").then(res => res.json())
+            fetch(process.env.REACT_APP_API_URL + "/api/Movies")
+                .then(res => res.json())
                 .then(
                     (result) => {
                         setIsLoaded(true);

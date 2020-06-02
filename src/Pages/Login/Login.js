@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
@@ -8,11 +8,18 @@ import {useForm} from "react-hook-form";
 import "./login.css";
 
 const Login = () => {
+    const axios = require('axios');
+    const {register, handleSubmit, errors, setError} = useForm();
 
-    const {register, handleSubmit, errors} = useForm();
     const onSubmit = data => {
-        //fetch aqui
-        console.log(data);
+
+        axios.post(process.env.REACT_APP_API_URL + "/api/Users/login", data)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                setError("Button", undefined, "Email ou password incorretos.");
+            });
     }
 
     return (
@@ -53,8 +60,11 @@ const Login = () => {
                                     </div>
                                     <div className="col-md-1"></div>
                                     <div className="col-md text-right">
-                                        <input type="submit" className="btn btn-success btn-block" value="Entrar"/>
+                                        <input type="submit" className="btn btn-success btn-block" value="Entrar"
+                                               name="Button"/>
                                     </div>
+                                    {errors.Button &&
+                                    <label className="text-danger">{errors.Button.message}</label>}
                                 </div>
                             </form>
                         </Card.Body>

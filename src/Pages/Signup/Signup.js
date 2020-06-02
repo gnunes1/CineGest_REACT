@@ -1,18 +1,29 @@
 import React from 'react';
-
 import {Card} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {ROUTES} from "../../routes";
 import {useForm} from "react-hook-form";
 
 import "./signup.css";
 
 const Signup = () => {
+    const axios = require('axios');
+    const history = useHistory();
 
-    const {register, handleSubmit, errors} = useForm();
+    const {register, handleSubmit, errors, setError, getValues} = useForm();
+
+
     const onSubmit = data => {
-        //fetch aqui
-        console.log(data);
+        axios.post(process.env.REACT_APP_API_URL + "/api/Users/signup", data)
+            .then(function (response) {
+                history.push("/login");
+            })
+            .catch(function (error) {
+                try {
+                    setError("Button", undefined, error.response.data.error);
+                } catch (error) {
+                }
+            });
     }
 
     return (
@@ -34,35 +45,48 @@ const Signup = () => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="form-group">
                                     <span className="text-muted">Nome</span>
-                                    <input type="text" name="Nome" ref={register({required: true})}
-                                           className="form-control" placeholder="Insira o seu nome"/>
-                                    {errors.Nome &&
+                                    <input type="text" name="Name" ref={register({required: true})}
+                                           className="form-control"/>
+                                    {errors.Name &&
                                     <label className="text-danger">Insira o seu nome.</label>}
                                 </div>
                                 <div className="form-group">
                                     <span className="text-muted">Email</span>
                                     <input type="email" name="Email" ref={register({required: true})}
-                                           className="form-control" placeholder="Insira o seu email"/>
+                                           className="form-control"/>
                                     {errors.Email &&
                                     <label className="text-danger">Insira o seu email.</label>}
                                 </div>
                                 <div className="form-group">
                                     <span className="text-muted">Password</span>
                                     <input type="password" name="Password" ref={register({required: true})}
-                                           className="form-control" placeholder="Insira o seu nome"/>
+                                           className="form-control"/>
                                     {errors.Password &&
                                     <label className="text-danger">Insira a sua password.</label>}
                                 </div>
                                 <div className="form-group">
-                                    <span className="text-muted">Idade</span>
-                                    <input type="number" min="1" name="Age" ref={register({required: true})}
-                                           className="form-control" placeholder="Insira a sua idade"/>
-                                    {errors.Age &&
-                                    <label className="text-danger">Insira a sua idade.</label>}
+                                    <span className="text-muted">Repita a sua password</span>
+                                    <input type="password" name="Password2" ref={register({
+                                        required: true,
+                                        validate: value => value === getValues("Password")
+                                    })}
+                                           className="form-control"/>
+                                    {errors.Password2 &&
+                                    <label className="text-danger">As passwords não coincidem.</label>}
+                                </div>
+                                <div className="form-group">
+                                    <span className="text-muted">Data de nascimento</span>
+                                    <input type="date" className="form-control" name="DoB"
+                                           ref={register({required: true})}/>
+                                    {errors.DoB &&
+                                    <label className="text-danger">Insira a sua data de nascimento.</label>}
                                 </div>
                                 <div className="form-row">
                                     <div className="col-md">
-                                        <input type="submit" className="btn btn-success btn-block" value="Criar conta"/>
+                                        <input type="submit" className="btn btn-success btn-block"
+                                               value="Criar conta" name="button"/>
+                                        {errors.Button &&
+                                        <label className="text-danger">{errors.Button.message}</label>}
                                     </div>
                                 </div>
                             </form>
