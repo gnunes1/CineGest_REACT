@@ -1,24 +1,42 @@
 import React, {useState} from 'react';
 
 import {Card} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {ROUTES} from "../../routes";
 import {useForm} from "react-hook-form";
+import axios from 'axios';
 
 import "./login.css";
+import {useRecoilState} from "recoil";
+import UserStore from "../../Stores/User";
 
 const Login = () => {
-    const axios = require('axios');
+    const history = useHistory();
     const {register, handleSubmit, errors, setError} = useForm();
+    const [userStore, setUserStore] = useRecoilState(UserStore);
 
     const onSubmit = data => {
 
-        axios.post(process.env.REACT_APP_API_URL + "/api/Users/login", data)
+        let formData = new FormData();
+        formData.append("Email", data.Email);
+        formData.append("Password", data.Password);
+
+        axios.post(process.env.REACT_APP_API_URL + "/api/users/login", formData)
             .then(function (response) {
-                console.log(response);
+
+                localStorage.setItem("token", response.data.token);
+                setUserStore({name: response.data.name, role: response.data.role});
+
+                history.push(ROUTES.Welcome);
             })
             .catch(function (error) {
-                setError("Button", undefined, "Email ou password incorretos.");
+                if (error.response === undefined) {
+                    setError("Button", undefined, "Erro inesperado.");
+                } else if (error.response.status === 400) {
+                    setError("Button", undefined, error.response.data);
+                } else {
+                    setError("Button", undefined, "Erro inesperado.");
+                }
             });
     }
 
@@ -54,17 +72,18 @@ const Login = () => {
                                     <label className="text-danger">Insira a sua password.</label>}
 
                                 </div>
-                                <div className="form-row">
-                                    <div className="mt-1 ml-2">
-                                        <Link to={ROUTES.Signup} className="small">Ainda não tem conta?</Link>
-                                    </div>
-                                    <div className="col-md-1"></div>
-                                    <div className="col-md text-right">
-                                        <input type="submit" className="btn btn-success btn-block" value="Entrar"
-                                               name="Button"/>
+                                <div className="form-group mb-0">
+                                    <div className="row">
+                                        <div className="col-md mt-1">
+                                            <Link to={ROUTES.Signup} className="small">Ainda não tem conta?</Link>
+                                        </div>
+                                        <div className="col-md text-right">
+                                            <input type="submit" className="btn btn-success btn-block" value="Entrar"
+                                                   name="Button"/>
+                                        </div>
                                     </div>
                                     {errors.Button &&
-                                    <label className="text-danger">{errors.Button.message}</label>}
+                                    <label className="text-danger mt-1 mb-0">{errors.Button.message}</label>}
                                 </div>
                             </form>
                         </Card.Body>

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import {Col, Container, Nav, Row} from "react-bootstrap";
-import CGNavbar from "../../../Components/Navbar/CGNavbar";
+import {Col, Container, Row} from "react-bootstrap";
 import TicketsTable from "./TicketsTable";
+import CGNavbar from "../../../Components/Navbar/CGNavbar";
 
 import "./tickets.css";
 
 const Tickets = () => {
     return (
         <React.Fragment>
-            <CGNavbar color="dark"/>
+            <CGNavbar/>
             <Container fluid className="mt-5 px-5 align">
                 <Row>
                     <Col>

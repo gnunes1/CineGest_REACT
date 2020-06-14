@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const DatePickerCG = (props) => {
+const CGDatePicker = (props) => {
 
     const [startDate, setStartDate] = useState(new Date());
 
@@ -13,4 +13,4 @@ const DatePickerCG = (props) => {
     )
 }
 
-export default DatePickerCG;
+export default CGDatePicker;

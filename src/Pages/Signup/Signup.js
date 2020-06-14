@@ -3,26 +3,34 @@ import {Card} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
 import {ROUTES} from "../../routes";
 import {useForm} from "react-hook-form";
+import axios from "axios";
 
 import "./signup.css";
 
 const Signup = () => {
-    const axios = require('axios');
     const history = useHistory();
-
     const {register, handleSubmit, errors, setError, getValues} = useForm();
 
-
     const onSubmit = data => {
-        axios.post(process.env.REACT_APP_API_URL + "/api/Users/signup", data)
+        let formData = new FormData();
+        formData.append("DoB", data.DoB);
+        formData.append("Email", data.Email);
+        formData.append("Name", data.Name);
+        formData.append("Password", data.Password);
+
+        axios.post(process.env.REACT_APP_API_URL + "/api/users/signup", formData)
             .then(function (response) {
-                history.push("/login");
+                history.push(ROUTES.Login);
             })
             .catch(function (error) {
-                try {
-                    setError("Button", undefined, error.response.data.error);
-                } catch (error) {
+                if (error.response === undefined) {
+                    setError("Button", undefined, "Erro inesperado.");
+                } else if (error.response.status === 400) {
+                    setError("Button", undefined, "Este email já está a ser usado.");
+                } else {
+                    setError("Button", undefined, "Erro inesperado.");
                 }
+                //setError("Button", undefined, error.response);
             });
     }
 
@@ -81,13 +89,11 @@ const Signup = () => {
                                     {errors.DoB &&
                                     <label className="text-danger">Insira a sua data de nascimento.</label>}
                                 </div>
-                                <div className="form-row">
-                                    <div className="col-md">
-                                        <input type="submit" className="btn btn-success btn-block"
-                                               value="Criar conta" name="button"/>
-                                        {errors.Button &&
-                                        <label className="text-danger">{errors.Button.message}</label>}
-                                    </div>
+                                <div className="form-group mb-0">
+                                    <input type="submit" className="btn btn-success btn-block"
+                                           value="Criar conta" name="button"/>
+                                    {errors.Button &&
+                                    <label className="text-danger mt-1 mb-0">{errors.Button.message}</label>}
                                 </div>
                             </form>
                         </Card.Body>

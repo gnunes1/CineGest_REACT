@@ -1,26 +1,21 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {Nav, Navbar} from "react-bootstrap";
-import {ROUTES} from "../../routes";
+import CGNavbarAnon from "./CGNavbarAnon";
+import CGNavbarUser from "./CGNavbarUser";
+import CGNavbarAdmin from "./CGNavbarAdmin";
+import CGNavbarLoading from "./CGNavbarLoading";
+import {useRecoilState} from "recoil";
+import UserStore from "../../Stores/User";
 
-import "./cgNavbar.css";
+const CGNavbar = () => {
 
-const CGNavbar = (props) => (
-        <Navbar bg={props.color} variant={props.color} className="justify-content-between" expand="lg" sticky="top">
-            <Navbar.Brand>
-                <Link to={ROUTES.Welcome} className="text-decoration-none">
-                    CineGest
-                </Link>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Navbar.Collapse id="basic-navbar-nav">
-                {props.admin}
-                <div className="ml-auto">
-                    {props.user}
-                </div>
-            </Navbar.Collapse>
-        </Navbar>
-    )
-;
+    const [userStore, setUserStore] = useRecoilState(UserStore);
+    
+    return <React.Fragment>
+        {userStore.role === "" && <CGNavbarLoading/>}
+        {userStore.role === "Anon" && <CGNavbarAnon/>}
+        {userStore.role === "User" && <CGNavbarUser name={userStore.name}/>}
+        {userStore.role === "Admin" && <CGNavbarAdmin name={userStore.name}/>}
+    </React.Fragment>;
+};
 
 export default CGNavbar;

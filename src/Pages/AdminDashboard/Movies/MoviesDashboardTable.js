@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Table} from "react-bootstrap";
 import MoviesDashboardTableItem from "./MoviesDashboardTableItem";
 
-const MoviesDashboardTable = () => {
+const MoviesDashboardTable = (props) => {
 
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        setData(list);
-    }, []);
+    const data = props.data;
 
     return (
         <Table responsive striped={true} className="text-white">
@@ -19,11 +15,12 @@ const MoviesDashboardTable = () => {
                 <th className="align-middle text-center">Gêneros</th>
                 <th className="align-middle text-center">Duração</th>
                 <th className="align-middle text-center">Idade mínima</th>
+                <th className="align-middle text-center">Em destaque</th>
                 <th className="align-middle text-center">Configurações</th>
             </tr>
             </thead>
             <tbody>
-            {data && data.map((item) => ( //cria rows para cada filme
+            {data && data.map((item) => ( //cria a linha respetiva de cada filme
                 <MoviesDashboardTableItem
                     key={item.id}
                     id={item.id}
@@ -31,7 +28,8 @@ const MoviesDashboardTable = () => {
                     description={item.description}
                     genres={item.genres}
                     duration={item.duration}
-                    minAge={item.minAge}
+                    min_age={item.min_age}
+                    highlighted={item.highlighted}
                 />
             ))}
 
@@ -41,12 +39,3 @@ const MoviesDashboardTable = () => {
 };
 
 export default MoviesDashboardTable;
-
-const list = [{
-    id: "1",
-    name: "a",
-    description: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    genres: "Ação, Bla, bla, bla, Ação, Bla, bla, bla, Ação, Bla, bla, bla, Ação, Bla, bla, bla, Ação, Bla, bla, bla, Ação, Bla, bla, bla, Ação, Bla, bla, bla, ",
-    duration: "92",
-    minAge: "1"
-}];

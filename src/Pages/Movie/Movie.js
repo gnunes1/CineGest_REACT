@@ -1,22 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {
-    Button,
     Col,
     Container,
     Row,
 } from "react-bootstrap";
-
 import MovieTable from "./Components/MovieTable";
 import MovieData from "./Components/MovieData";
 import MovieSearch from "./Components/MovieSearch";
 import CGNavbar from "../../Components/Navbar/CGNavbar";
-import {ROUTES} from "../../routes";
 
 import "./movie.css"
 
 //pagina de cada filme e as suas sessoes
-const Movie = React.memo(() => {
+const Movie = () => {
     const movieId = useParams().movieId;
 
     const [data, setData] = useState([])
@@ -26,7 +23,7 @@ const Movie = React.memo(() => {
 
     return (
         <React.Fragment>
-            <CGNavbar user={userButtons} color="dark"/>
+            <CGNavbar/>
             <Container fluid className="mt-5 pl-5 movieContainer">
                 <Row className="movieDetails">
                     <Col md="auto">
@@ -47,16 +44,9 @@ const Movie = React.memo(() => {
             </Container>
         </React.Fragment>
     );
-});
+};
 
 export default Movie;
-
-const userButtons = (
-    <React.Fragment>
-        <Button variant="outline-warning" as={Link} to={ROUTES.Signup}>Registar</Button>
-        <Button variant="outline-light ml-3" as={Link} to={ROUTES.Login}>INICIAR SESSÃO</Button>
-    </React.Fragment>
-);
 
 const list = [{
     name: "Blade Runner 2049",

@@ -7,7 +7,7 @@ import DeleteMovie from "./Forms/DeleteMovie";
 const MoviesDashboardTableItem = (props) => { //retorna uma linha com os dados do filme
     const [modalUpdateShow, setModalUpdateShow] = React.useState(false);
     const [modalDeleteShow, setModalDeleteShow] = React.useState(false);
-
+    
     return (
         <React.Fragment>
             <tr>
@@ -15,7 +15,11 @@ const MoviesDashboardTableItem = (props) => { //retorna uma linha com os dados d
                 <td className="text-center text-break">{props.description}</td>
                 <td className="text-center text-break">{props.genres}</td>
                 <td className="text-center">{props.duration}</td>
-                <td className="text-center">{props.minAge}</td>
+                <td className="text-center">{props.min_age}</td>
+                <td className="text-center">
+                    {props.highlighted === true && "Sim"}
+                    {props.highlighted === false && "Não"}
+                </td>
                 <td className="text-center">
                     <Button variant="link" onClick={() => setModalUpdateShow(true)}>
                         <GearFill/>

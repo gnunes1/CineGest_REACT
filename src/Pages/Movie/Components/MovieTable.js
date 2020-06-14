@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Col, Table} from "react-bootstrap";
 import MovieTableItem from "./MovieTableItem";
 
-const MovieTable = (props) => { // tabela com as sessões do filme
+const MovieTable = React.memo((props) => { // tabela com as sessões do filme
     const [data, setData] = useState([]);
     useEffect(() => { //on create
         setData(props.movie);
@@ -37,6 +37,6 @@ const MovieTable = (props) => { // tabela com as sessões do filme
             </tbody>
         </Table>
     );
-};
+});
 
 export default MovieTable;

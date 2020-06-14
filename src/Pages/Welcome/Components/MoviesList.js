@@ -2,11 +2,20 @@ import React, {useEffect, useState} from 'react';
 
 import MoviesItem from "./MoviesItem";
 import CGCarousel from "../../../Components/CGCarousel.js";
+import axios from "axios";
 
 const MoviesList = React.memo(() => { //so e chamado quando necessario; popula os slides dos filmes
     const [data, setData] = useState([])
     useEffect(() => {
-        setData(list)
+        axios.get(process.env.REACT_APP_API_URL + "/api/movies")
+            .then(function (response) {
+                setData(response.data);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+
     }, [])
 
 
@@ -37,57 +46,6 @@ const MoviesList = React.memo(() => { //so e chamado quando necessario; popula o
 });
 
 export default MoviesList;
-
-const list = [
-    {
-        id: "1",
-        title: "a",
-        src: "https://www.mauvais-genres.com/26247/avengers-endgame-original-movie-poster-15x21-in-2019-anthony-russo-robert-downey-jr.jpg",
-        alt: "a"
-    },
-    {
-        id: "2",
-        title: "b",
-        src: "https://images-na.ssl-images-amazon.com/images/I/91WNnQZdybL._AC_SL1500_.jpg",
-        alt: "b"
-    },
-    {
-        id: "3",
-        title: "c",
-        src: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88314/91406/Blade-Runner-2049-Final-Style-Poster-buy-original-movie-posters-at-starstills__83407.1519904794.jpg",
-        alt: "c"
-    },
-    {
-        id: "4",
-        title: "d",
-        src: "https://cdn.europosters.eu/image/750/posters/rush-movie-poster-i18511.jpg",
-        alt: "d"
-    },
-    {
-        id: "5",
-        title: "e",
-        src: "https://www.reproduction-gallery.com/catalogue/uploads/1155203530_large-image_star-wars-movie-poster-lg.jpg?is_thumbnail=yes",
-        alt: "e"
-    },
-    {
-        id: "6",
-        title: "f",
-        src: "https://www.joblo.com/assets/images/joblo/posters/2020/03/2EF9FAE7-B888-4DBA-868D-B4E289BAE769.jpeg",
-        alt: "f"
-    },
-    {
-        id: "7",
-        title: "g",
-        src: "https://maxcdn.icons8.com/app/uploads/2019/05/poster-for-movie.png",
-        alt: "g"
-    },
-    {
-        id: "8",
-        title: "h",
-        src: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/89058/93685/Joker-2019-Final-Style-steps-Poster-buy-original-movie-posters-at-starstills__62518.1572351165.jpg?c=2?imbypass=on",
-        alt: "h"
-    }
-];
 
 const responsive = {
     superLargeDesktop: {
