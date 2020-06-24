@@ -18,6 +18,7 @@ const CGNavbarAdmin = (props) => {
                 <Nav className="mr-auto">
                     <Nav.Link as={Link} to={ROUTES.CinemasDashboard} className="text-decoration-none">Cinemas</Nav.Link>
                     <Nav.Link as={Link} to={ROUTES.MoviesDashboard} className="text-decoration-none">Filmes</Nav.Link>
+                    <Nav.Link as={Link} to={ROUTES.SessionsDashboard} className="text-decoration-none">Sessões</Nav.Link>
                     <Nav.Link as={Link} to={ROUTES.UsersDashboard} className="text-decoration-none">Utilizadores</Nav.Link>
                     <Nav.Link as={Link} to={ROUTES.TicketsDashboard} className="text-decoration-none">Bilhetes</Nav.Link>
                     <Nav.Link as={Link} to={ROUTES.Tickets} className="text-decoration-none">Os meus bilhetes</Nav.Link>

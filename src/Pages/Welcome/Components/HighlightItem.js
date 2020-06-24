@@ -4,19 +4,19 @@ import {ROUTES} from "../../../routes";
 
 import "./HighLightItem.css"
 
-const HighlightItem = (props) => { //retorna um filme para inserir no sldie dos filmes em destaque
-
+const HighlightItem = (props) => { //retorna um filme para inserir no slide dos filmes em destaque
     return (
         <div className="text-center">
             <Link to={ROUTES.Movie(props.id)}>
                 <img
                     className="carousel-img"
-                    src={props.image}
+                    src={props.poster}
                     alt={props.alt}
                     title={props.name}
                 />
             </Link>
-            <h5 className="text-warning mt-3">Disponível de {props.dateBegin} a {props.dateEnd}</h5>
+            {props.min && props.max && <h5 className="text-warning mt-3">Disponível de {props.min} a {props.max}</h5>}
+            {/*{!props.min && !props.max && <h5 className="text-warning mt-3">Disponível</h5>}*/}
         </div>
     );
 }

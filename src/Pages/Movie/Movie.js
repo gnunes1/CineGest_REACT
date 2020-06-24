@@ -1,14 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import {
-    Col,
-    Container,
-    Row,
-} from "react-bootstrap";
+import {Col, Container, Row,} from "react-bootstrap";
 import MovieTable from "./Components/MovieTable";
 import MovieData from "./Components/MovieData";
 import MovieSearch from "./Components/MovieSearch";
 import CGNavbar from "../../Components/Navbar/CGNavbar";
+import axios from "axios";
 
 import "./movie.css"
 
@@ -17,8 +14,15 @@ const Movie = () => {
     const movieId = useParams().movieId;
 
     const [data, setData] = useState([])
+
     useEffect(() => { //on component create
-        setData(list);
+        axios.get(process.env.REACT_APP_API_URL + "/api/movies/" + movieId)
+            .then(function (response) {
+                setData(response.data);
+            })
+            .catch(function (error) {
+
+            });
     }, [])
 
     return (
@@ -37,7 +41,7 @@ const Movie = () => {
                             <MovieSearch/> {/*opcoes de filtragem*/}
                         </Row>
                         <div id="movieTable">{/*tabela de sessões disponíveis*/}
-                            <MovieTable movie={""}/>
+                            <MovieTable/>
                         </div>
                     </Col>
                 </Row>
@@ -47,12 +51,3 @@ const Movie = () => {
 };
 
 export default Movie;
-
-const list = [{
-    name: "Blade Runner 2049",
-    image: "",
-    description: "Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing for thirty years.",
-    genres: "Ação; Drama; Mistério; Ficção científica; Suspense",
-    duration: "92",
-    minAge: "18"
-}]

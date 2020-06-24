@@ -4,22 +4,22 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import MoviesDashboardTable from "./MoviesDashboardTable";
 import CreateMovie from "./Forms/CreateMovie";
 import CGNavbar from "../../../Components/Navbar/CGNavbar";
-
-import "./moviesDashboard.css";
 import axios from "axios";
 
+import "./moviesDashboard.css";
+
 const MoviesDashboard = () => {
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
     const [data, setData] = useState([]);
 
     const updateTable = () => {
-        axios.get(process.env.REACT_APP_API_URL + "/api/movies")
+        axios.get(process.env.REACT_APP_API_URL + "/api/movies/details",
+            {headers: {token: localStorage.getItem("token")}})
             .then(function (response) {
                 setData(response.data);
             })
             .catch(function (error) {
-                // handle error
-                console.log(error);
+
             });
     }
 
@@ -38,14 +38,11 @@ const MoviesDashboard = () => {
                             Adicionar registo
                         </Button>
                     </Col>
-                    <CreateMovie show={modalShow} onHide={() => {
-                        setModalShow(false);
-                        updateTable()
-                    }}/>
+                    <CreateMovie show={modalShow} onHide={() => setModalShow(false)} onSubmit={() => updateTable()}/>
                 </Row>
 
                 <div className="mx-5 mt-3" id="moviesDashboardTable">
-                    <MoviesDashboardTable data={data}/>
+                    <MoviesDashboardTable data={data} setData={setData}/>
                 </div>
             </Container>
         </React.Fragment>

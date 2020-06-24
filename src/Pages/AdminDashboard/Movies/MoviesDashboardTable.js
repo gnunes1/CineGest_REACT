@@ -30,9 +30,9 @@ const MoviesDashboardTable = (props) => {
                     duration={item.duration}
                     min_age={item.min_age}
                     highlighted={item.highlighted}
+                    setData={props.setData}
                 />
             ))}
-
             </tbody>
         </Table>
     );

@@ -25,12 +25,9 @@ const Signup = () => {
             .catch(function (error) {
                 if (error.response === undefined) {
                     setError("Button", undefined, "Erro inesperado.");
-                } else if (error.response.status === 400) {
-                    setError("Button", undefined, "Este email já está a ser usado.");
                 } else {
-                    setError("Button", undefined, "Erro inesperado.");
+                    setError("Button", undefined, error.response.data);
                 }
-                //setError("Button", undefined, error.response);
             });
     }
 

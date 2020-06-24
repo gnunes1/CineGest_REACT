@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Table} from "react-bootstrap";
 import CinemasDashboardTableItem from "./CinemasDashboardTableItem";
 
-const CinemasDashboardTable = () => {
+const CinemasDashboardTable = (props) => {
 
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        setData(list);
-    }, []);
+    const data = props.data;
 
     return (
         <Table responsive striped={true} className="text-white">
@@ -30,80 +26,12 @@ const CinemasDashboardTable = () => {
                     city={item.city}
                     location={item.location}
                     capacity={item.capacity}
+                    setData={props.setData}
                 />
             ))}
-
             </tbody>
         </Table>
     );
 };
 
 export default CinemasDashboardTable;
-
-const list = [{
-    id: "1",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "2",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "3",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "4",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "5",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "6",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "7",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "8",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "9",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "10",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-}, {
-    id: "11",
-    name: "Anfiteatro de Tomar",
-    city: "Tomar",
-    location: "Rua principal",
-    capacity: "50"
-},];

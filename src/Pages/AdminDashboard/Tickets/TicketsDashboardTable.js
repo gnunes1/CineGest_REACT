@@ -1,23 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import {Table} from "react-bootstrap";
 import TicketsDashboardTableItem from "./TicketsDashboardTableItem";
+import axios from "axios";
 
 const TicketsDashboardTable = () => {
 
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        setData(list);
-    }, []);
+    const updateTable = () => {
+        axios.get(process.env.REACT_APP_API_URL + "/api/tickets",
+            {headers: {token: localStorage.getItem("token")}})
+            .then(function (response) {
+                setData(response.data);
+            })
+            .catch(function (error) {
+
+            });
+    }
+
+    useEffect(updateTable, []);
 
     return (
         <Table responsive striped={true} className="text-white">
             <thead>
             <tr>
                 <th className="align-middle text-center">Email do utilizador</th>
-                <th className="align-middle text-center">Lugar</th>
+                <th className="align-middle text-center">Cinema</th>
                 <th className="align-middle text-center">Filme</th>
-                <th className="align-middle text-center">Hora de início</th>
                 <th className="align-middle text-center">Data de início</th>
                 <th className="align-middle text-center">Data de fim</th>
                 <th className="align-middle text-center">Configurações</th>
@@ -34,6 +43,7 @@ const TicketsDashboardTable = () => {
                     timeStart={item.timeStart}
                     dateStart={item.dateStart}
                     dateEnd={item.dateEnd}
+                    setData={setData}
                 />
             ))}
 
@@ -43,13 +53,3 @@ const TicketsDashboardTable = () => {
 };
 
 export default TicketsDashboardTable;
-
-const list = [{
-    id: "1",
-    email: "a@a",
-    seat: "1",
-    movie: "ghjvvg",
-    timeStart: "14:45",
-    dateStart: "01-01-2020",
-    dateEnd: "01-01-2020"
-}];

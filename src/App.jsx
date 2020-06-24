@@ -1,10 +1,5 @@
 import React, {useEffect} from "react";
-import {
-    BrowserRouter as Router,
-    Route,
-    Redirect,
-    Switch,
-} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-dom";
 
 import {ROUTES} from "./routes";
 import WelcomePage from "./Pages/Welcome/Welcome";
@@ -16,6 +11,7 @@ import CinemasDashboard from "./Pages/AdminDashboard/Cinemas/CinemasDashboard";
 import MoviesDashboard from "./Pages/AdminDashboard/Movies/MoviesDashboard";
 import UsersDashboard from "./Pages/AdminDashboard/Users/UsersDashboard";
 import TicketsDashboard from "./Pages/AdminDashboard/Tickets/TicketsDashboard";
+import SessionsDashboard from "./Pages/AdminDashboard/Sessions/SessionsDashboard";
 import {useRecoilState} from "recoil";
 import axios from "axios";
 import UserStore from "./Stores/User";
@@ -55,6 +51,7 @@ const Main = () => {
                 <Route path={ROUTES.MoviesDashboard} exact={true} component={MoviesDashboard}/>
                 <Route path={ROUTES.UsersDashboard} exact={true} component={UsersDashboard}/>
                 <Route path={ROUTES.TicketsDashboard} exact={true} component={TicketsDashboard}/>
+                <Route path={ROUTES.SessionsDashboard} exact={true} component={SessionsDashboard}/>
                 <Redirect to={ROUTES.Welcome}/>
             </Switch>
         </main>

@@ -13,4 +13,5 @@ export const ROUTES = {
     MoviesDashboard: "/dashboard/movies",
     UsersDashboard: "/dashboard/users",
     TicketsDashboard: "/dashboard/tickets",
+    SessionsDashboard: "/dashboard/sessions"
 }

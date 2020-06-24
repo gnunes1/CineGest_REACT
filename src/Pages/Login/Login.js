@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import {Card} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
@@ -32,10 +32,8 @@ const Login = () => {
             .catch(function (error) {
                 if (error.response === undefined) {
                     setError("Button", undefined, "Erro inesperado.");
-                } else if (error.response.status === 400) {
-                    setError("Button", undefined, error.response.data);
                 } else {
-                    setError("Button", undefined, "Erro inesperado.");
+                    setError("Button", undefined, error.response.data);
                 }
             });
     }

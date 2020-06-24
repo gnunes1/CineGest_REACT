@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button} from "react-bootstrap";
 import {GearFill, Trash} from "react-bootstrap-icons";
 import UpdateMovie from "./Forms/UpdateMovie";
 import DeleteMovie from "./Forms/DeleteMovie";
+import axios from "axios";
 
 const MoviesDashboardTableItem = (props) => { //retorna uma linha com os dados do filme
-    const [modalUpdateShow, setModalUpdateShow] = React.useState(false);
-    const [modalDeleteShow, setModalDeleteShow] = React.useState(false);
-    
+    const [modalUpdateShow, setModalUpdateShow] = useState(false);
+    const [modalDeleteShow, setModalDeleteShow] = useState(false);
+
+    const updateTable = () => {
+        axios.get(process.env.REACT_APP_API_URL + "/api/movies/details",
+            {headers: {token: localStorage.getItem("token")}})
+            .then(function (response) {
+                props.setData(response.data);
+            })
+            .catch(function (error) {
+            });
+    }
+
     return (
         <React.Fragment>
             <tr>
@@ -31,9 +42,11 @@ const MoviesDashboardTableItem = (props) => { //retorna uma linha com os dados d
                 </td>
             </tr>
             {modalUpdateShow &&
-            <UpdateMovie show={modalUpdateShow} onHide={() => setModalUpdateShow(false)} id={props.id}/>}
+            <UpdateMovie show={modalUpdateShow} onHide={() => setModalUpdateShow(false)} id={props.id}
+                         onSubmit={() => updateTable()}/>}
             {modalDeleteShow &&
-            <DeleteMovie show={modalDeleteShow} onHide={() => setModalDeleteShow(false)} id={props.id}/>}
+            <DeleteMovie show={modalDeleteShow} onHide={() => setModalDeleteShow(false)} id={props.id}
+                         onSubmit={() => updateTable()}/>}
         </React.Fragment>
     );
 }

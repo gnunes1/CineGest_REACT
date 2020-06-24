@@ -12,10 +12,8 @@ const MoviesList = React.memo(() => { //so e chamado quando necessario; popula o
                 setData(response.data);
             })
             .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
 
+            });
     }, [])
 
 
@@ -34,11 +32,8 @@ const MoviesList = React.memo(() => { //so e chamado quando necessario; popula o
                     <MoviesItem
                         key={item.id}
                         id={item.id}
-                        title={item.title}
-                        src={item.src}
-                        alt={item.alt}
-                        dateBegin={item.dateBegin}
-                        dateEnd={item.dateEnd}
+                        title={item.name}
+                        src={item.poster}
                     />
                 ))}
             </CGCarousel>

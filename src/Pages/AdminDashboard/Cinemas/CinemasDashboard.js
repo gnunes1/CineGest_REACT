@@ -1,14 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {Button, Col, Container, Row} from "react-bootstrap";
 import CinemasDashboardTable from "./CinemasDashboardTable";
 import CreateCinema from "./Forms/CreateCinema";
 import CGNavbar from "../../../Components/Navbar/CGNavbar";
+import axios from "axios";
 
 import "./cinemasDashboard.css";
 
 const CinemasDashboard = () => {
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
+    const [data, setData] = useState([]);
+
+    const updateTable = () => {
+        axios.get(process.env.REACT_APP_API_URL + "/api/cinemas",
+            {headers: {token: localStorage.getItem("token")}})
+            .then(function (response) {
+                setData(response.data);
+            })
+            .catch(function (error) {
+
+            });
+    };
+
+    useEffect(updateTable, []);
+
 
     return (
         <React.Fragment>
@@ -23,11 +39,11 @@ const CinemasDashboard = () => {
                             Adicionar registo
                         </Button>
                     </Col>
-                    <CreateCinema show={modalShow} onHide={() => setModalShow(false)}/>
+                    <CreateCinema show={modalShow} onHide={() => setModalShow(false)} onSubmit={() => updateTable()}/>
                 </Row>
 
                 <div className="mx-5 mt-3" id="cinemasDashboardTable">
-                    <CinemasDashboardTable/>
+                    <CinemasDashboardTable data={data} setData={setData}/>
                 </div>
             </Container>
         </React.Fragment>

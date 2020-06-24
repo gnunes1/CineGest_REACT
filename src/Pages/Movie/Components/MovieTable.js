@@ -1,12 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {Col, Table} from "react-bootstrap";
+import React from 'react';
+import {Table} from "react-bootstrap";
 import MovieTableItem from "./MovieTableItem";
 
 const MovieTable = React.memo((props) => { // tabela com as sessões do filme
-    const [data, setData] = useState([]);
-    useEffect(() => { //on create
-        setData(props.movie);
-    }, [])
+    const data = props.data;
 
     return (
         <Table responsive striped={true} className="text-white">
