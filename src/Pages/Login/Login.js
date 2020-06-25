@@ -25,7 +25,11 @@ const Login = () => {
             .then(function (response) {
 
                 localStorage.setItem("token", response.data.token);
-                setUserStore({name: response.data.name, role: response.data.role});
+                setUserStore({
+                    name: response.data.name,
+                    role: response.data.role,
+                    avatar: response.data.avatar
+                });
 
                 history.push(ROUTES.Welcome);
             })
@@ -65,7 +69,7 @@ const Login = () => {
                                 <div className="form-group">
                                     <span className="text-muted">Password</span>
                                     <input type="password" name="Password" ref={register({required: true})}
-                                           className="form-control" placeholder="Insira o seu nome"/>
+                                           className="form-control" placeholder="Insira a sua password"/>
                                     {errors.Password &&
                                     <label className="text-danger">Insira a sua password.</label>}
 

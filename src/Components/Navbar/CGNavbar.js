@@ -1,20 +1,19 @@
 import React from "react";
-import CGNavbarAnon from "./CGNavbarAnon";
 import CGNavbarUser from "./CGNavbarUser";
 import CGNavbarAdmin from "./CGNavbarAdmin";
 import CGNavbarLoading from "./CGNavbarLoading";
 import {useRecoilState} from "recoil";
 import UserStore from "../../Stores/User";
+import CGNavbarAnon from "./CGNavbarAnon";
 
 const CGNavbar = () => {
 
     const [userStore, setUserStore] = useRecoilState(UserStore);
-    
     return <React.Fragment>
-        {userStore.role === "" && <CGNavbarLoading/>}
-        {userStore.role === "Anon" && <CGNavbarAnon/>}
-        {userStore.role === "User" && <CGNavbarUser name={userStore.name}/>}
-        {userStore.role === "Admin" && <CGNavbarAdmin name={userStore.name}/>}
+        {userStore.role === "noUser" && <CGNavbarAnon/>}
+        {userStore.role === null && <CGNavbarLoading/>}
+        {userStore.role === "User" && <CGNavbarUser name={userStore.name} avatar={userStore.avatar}/>}
+        {userStore.role === "Admin" && <CGNavbarAdmin name={userStore.name} avatar={userStore.avatar}/>}
     </React.Fragment>;
 };
 

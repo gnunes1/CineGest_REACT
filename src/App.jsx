@@ -15,6 +15,8 @@ import SessionsDashboard from "./Pages/AdminDashboard/Sessions/SessionsDashboard
 import {useRecoilState} from "recoil";
 import axios from "axios";
 import UserStore from "./Stores/User";
+import ProtectedRoute from "./ProtectedRoute";
+import Settings from "./Pages/UserProfile/Settings";
 
 const App = () => {
     const [userStore, setUserStore] = useRecoilState(UserStore);
@@ -22,18 +24,24 @@ const App = () => {
     useEffect(() => {
         axios.get(process.env.REACT_APP_API_URL + "/api/users/authenticated", {headers: {Token: localStorage.getItem("token")}})
             .then(function (response) {
-                setUserStore({name: response.data.name, role: response.data.role});
+                setUserStore({
+                    name: response.data.name,
+                    role: response.data.role,
+                    avatar: response.data.avatar,
+                });
             })
             .catch(function (error) {
-                setUserStore({name: "Anon", role: "Anon"});
+                setUserStore({name: null, role: "noUser", avatar: null});
             });
     }, []);
+
 
     return (
         <Router>
             <Main/>
         </Router>
     );
+
 };
 
 export default App;
@@ -44,14 +52,18 @@ const Main = () => {
             <Switch>
                 <Route path={ROUTES.Welcome} exact={true} component={WelcomePage}/>
                 <Route path={ROUTES.Movie()} exact={true} component={MoviePage}/>
-                <Route path={ROUTES.Tickets} exact={true} component={Tickets}/>
                 <Route path={ROUTES.Login} exact={true} component={Login}/>
                 <Route path={ROUTES.Signup} exact={true} component={Signup}/>
-                <Route path={ROUTES.CinemasDashboard} exact={true} component={CinemasDashboard}/>
-                <Route path={ROUTES.MoviesDashboard} exact={true} component={MoviesDashboard}/>
-                <Route path={ROUTES.UsersDashboard} exact={true} component={UsersDashboard}/>
-                <Route path={ROUTES.TicketsDashboard} exact={true} component={TicketsDashboard}/>
-                <Route path={ROUTES.SessionsDashboard} exact={true} component={SessionsDashboard}/>
+                <ProtectedRoute path={ROUTES.Tickets} exact={true} component={Tickets} role={["Admin", "User"]}/>
+                <ProtectedRoute path={ROUTES.Settings} exact={true} component={Settings} role={["Admin", "User"]}/>
+                <ProtectedRoute path={ROUTES.CinemasDashboard} exact={true} component={CinemasDashboard}
+                                role={"Admin"}/>
+                <ProtectedRoute path={ROUTES.MoviesDashboard} exact={true} component={MoviesDashboard} role={"Admin"}/>
+                <ProtectedRoute path={ROUTES.UsersDashboard} exact={true} component={UsersDashboard} role={"Admin"}/>
+                <ProtectedRoute path={ROUTES.TicketsDashboard} exact={true} component={TicketsDashboard}
+                                role={"Admin"}/>
+                <ProtectedRoute path={ROUTES.SessionsDashboard} exact={true} component={SessionsDashboard}
+                                role={"Admin"}/>
                 <Redirect to={ROUTES.Welcome}/>
             </Switch>
         </main>

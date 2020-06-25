@@ -14,7 +14,6 @@ const TicketsDashboardTable = () => {
                 setData(response.data);
             })
             .catch(function (error) {
-
             });
     }
 
@@ -26,7 +25,10 @@ const TicketsDashboardTable = () => {
             <tr>
                 <th className="align-middle text-center">Email do utilizador</th>
                 <th className="align-middle text-center">Cinema</th>
+                <th className="align-middle text-center">Cidade</th>
+                <th className="align-middle text-center">Localização</th>
                 <th className="align-middle text-center">Filme</th>
+                <th className="align-middle text-center">Lugar</th>
                 <th className="align-middle text-center">Data de início</th>
                 <th className="align-middle text-center">Data de fim</th>
                 <th className="align-middle text-center">Configurações</th>
@@ -37,12 +39,14 @@ const TicketsDashboardTable = () => {
                 <TicketsDashboardTableItem
                     key={item.id}
                     id={item.id}
+                    cinema={item.cinema}
                     email={item.email}
                     seat={item.seat}
                     movie={item.movie}
-                    timeStart={item.timeStart}
-                    dateStart={item.dateStart}
-                    dateEnd={item.dateEnd}
+                    start={item.start}
+                    end={item.end}
+                    city={item.city}
+                    location={item.location}
                     setData={setData}
                 />
             ))}

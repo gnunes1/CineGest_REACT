@@ -1,11 +1,12 @@
 import React from "react";
-import {Button, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {Button, Navbar} from "react-bootstrap";
 import {ROUTES} from "../../routes";
 
 import "./cgNavbar.css";
 
 const CGNavbarAnon = () => {
+
     return <Navbar bg="dark" variant="dark" className="justify-content-between" expand="lg" sticky="top">
         <Navbar.Brand>
             <Link to={ROUTES.Welcome} className="text-decoration-none">
@@ -20,6 +21,6 @@ const CGNavbarAnon = () => {
             </div>
         </Navbar.Collapse>
     </Navbar>
-}
+};
 
-export default CGNavbarAnon
+export default CGNavbarAnon;

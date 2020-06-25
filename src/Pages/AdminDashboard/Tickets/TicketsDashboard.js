@@ -7,6 +7,7 @@ import CGNavbar from "../../../Components/Navbar/CGNavbar";
 import "./ticketsDashboard.css";
 
 const TicketsDashboard = () => {
+
     return (
         <React.Fragment>
             <CGNavbar/>

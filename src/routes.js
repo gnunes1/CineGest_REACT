@@ -9,6 +9,7 @@ export const ROUTES = {
         return (`/movie/:movieId`);
     },
     Tickets: "/tickets",
+    Settings: "/settings",
     CinemasDashboard: "/dashboard/cinemas",
     MoviesDashboard: "/dashboard/movies",
     UsersDashboard: "/dashboard/users",
