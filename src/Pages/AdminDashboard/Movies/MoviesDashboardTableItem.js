@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {Button} from "react-bootstrap";
-import {GearFill, Trash} from "react-bootstrap-icons";
+import {GearFill, InfoCircle, Trash} from "react-bootstrap-icons";
 import UpdateMovie from "./Forms/UpdateMovie";
 import DeleteMovie from "./Forms/DeleteMovie";
 import axios from "axios";
+import {ROUTES} from "../../../routes";
+import {Link} from "react-router-dom";
 
 const MoviesDashboardTableItem = (props) => { //retorna uma linha com os dados do filme
     const [modalUpdateShow, setModalUpdateShow] = useState(false);
@@ -32,6 +34,13 @@ const MoviesDashboardTableItem = (props) => { //retorna uma linha com os dados d
                     {props.highlighted === false && "Não"}
                 </td>
                 <td className="text-center">
+                    <Button variant="link">
+                        <Link to={ROUTES.Movie(props.id)}>
+                            <InfoCircle/>
+                        </Link>
+                    </Button>
+
+                    {" "}
                     <Button variant="link" onClick={() => setModalUpdateShow(true)}>
                         <GearFill/>
                     </Button>

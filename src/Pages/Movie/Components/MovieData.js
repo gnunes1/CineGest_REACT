@@ -1,35 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Button, Row} from "react-bootstrap";
-import axios from "axios";
 
 import "./movieData.css"
 
 //Dados do filme
-const MovieData = React.memo((props) => {
+const MovieData = (props) => {
 
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL + "/api/movies/" + props.id)
-            .then(function (response) {
-                setData(response.data);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-    }, []);
+    const data = props.data;
 
     return (
         <React.Fragment>
             <Row>
                 <img
                     className="movieImg"
-                    src={data.image}
+                    src={data.poster}
                     alt={data.name}
                 />
             </Row>
             <Row className="text-center">
-                <Button variant="warning" block>Comprar</Button>
+                {localStorage.getItem("token") &&
+                <Button type="submit" variant="warning" block>Comprar</Button>}
             </Row>
             <Row className="pt-4 movieData">
                 <p className="font-weight-bold">Descrição:</p>
@@ -39,10 +29,10 @@ const MovieData = React.memo((props) => {
                 <p className="font-weight-bold">Duração:</p>
                 <p className="w-100">{data.duration} min</p>
                 <p className="font-weight-bold">Idade mínima:</p>
-                <p className="w-100">{data.minAge}</p>
+                <p className="w-100">{data.min_age}</p>
             </Row>
         </React.Fragment>
     );
-});
+};
 
 export default MovieData;

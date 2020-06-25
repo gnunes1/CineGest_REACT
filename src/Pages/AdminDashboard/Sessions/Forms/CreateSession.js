@@ -11,8 +11,9 @@ const CreateSession = (props) => {
     const [options, setOptions] = useState();
     const [options2, setOptions2] = useState();
     const [duration, setDuration] = useState();
-    const [minDate, setMinDate] = useState(new Date().toISOString().split('.')[0]
-        .slice(0, new Date().toISOString().split('.')[0].lastIndexOf(':')));
+    const [minDate, setMinDate] = useState(new Date().toISOString().split('.')[0].substring(0,
+        new Date().toISOString().split('.')[0].length - 3)
+    );
 
     useEffect(() => {
         axios.get(process.env.REACT_APP_API_URL + "/api/movies",
