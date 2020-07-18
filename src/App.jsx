@@ -17,6 +17,7 @@ import axios from "axios";
 import UserStore from "./Stores/User";
 import ProtectedRoute from "./ProtectedRoute";
 import Settings from "./Pages/UserProfile/Settings";
+import About from "./About";
 
 const App = () => {
     const [userStore, setUserStore] = useRecoilState(UserStore);
@@ -54,6 +55,7 @@ const Main = () => {
                 <Route path={ROUTES.Movie()} exact={true} component={MoviePage}/>
                 <Route path={ROUTES.Login} exact={true} component={Login}/>
                 <Route path={ROUTES.Signup} exact={true} component={Signup}/>
+                <Route path={ROUTES.About} exact={true} component={About}/>
                 <ProtectedRoute path={ROUTES.Tickets} exact={true} component={Tickets} role={["Admin", "User"]}/>
                 <ProtectedRoute path={ROUTES.Settings} exact={true} component={Settings} role={["Admin", "User"]}/>
                 <ProtectedRoute path={ROUTES.CinemasDashboard} exact={true} component={CinemasDashboard}

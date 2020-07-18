@@ -13,8 +13,8 @@ import CGModal from "../../Components/CGModal";
 const Movie = () => {
     const movieId = useParams().movieId;
     const {handleSubmit, register} = useForm();
-    const [data, setData] = useState([])
-    const [tableData, setTableData] = useState([])
+    const [data, setData] = useState([]) //dados do filme
+    const [tableData, setTableData] = useState([]) //lista de sessões
     const [ticket, setTicket] = useState(0)
     const [modalShow, setModalShow] = useState(false);
     const [body, setBody] = useState();
@@ -22,6 +22,7 @@ const Movie = () => {
     let formData = new FormData();
     formData.append("Movie", movieId)
 
+    //atualizar informação das sessões
     useEffect(() => {
         axios.get(process.env.REACT_APP_API_URL + "/api/movies/" + movieId)
             .then(function (response) {
@@ -42,7 +43,7 @@ const Movie = () => {
             });
     }
 
-
+//comprar bilhete
     const onSubmit = data => {
 
         let formData = new FormData();
@@ -82,7 +83,6 @@ const Movie = () => {
             </CGModal>
             <Container fluid className="mt-4 pl-5 movieContainer">
                 <form onSubmit={handleSubmit(onSubmit)}>
-
                     <Row className="movieDetails">
                         <Col md="auto">
                             <MovieData data={data}/> {/*informacao do filme*/}
@@ -94,7 +94,6 @@ const Movie = () => {
                             <div id="movieTable" className="mt-3">{/*tabela de sessões disponíveis*/}
                                 <MovieTable id={movieId} ticket={ticket} setTicket={setTicket} data={tableData}/>
                             </div>
-
                         </Col>
                     </Row>
                 </form>
