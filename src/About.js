@@ -20,26 +20,27 @@ const About = () => {
                 <p>Bibliotecas:</p>
                 <ul>
                     <li>Bootstrap -
-                        <a href="https://fonts.google.com/specimen/Inter">
+                        <a target="_blank" rel="noopener noreferrer" href="https://fonts.google.com/specimen/Inter">
                             https://react-bootstrap.github.io/
                         </a>
                     </li>
                     <li>React Recoil -
-                        <a href="https://recoiljs.org/">
+                        <a target="_blank" rel="noopener noreferrer" href="https://recoiljs.org/">
                             https://recoiljs.org/
                         </a>
                     </li>
                     <li>Axios -
-                        <a href="https://github.com/axios/axios">
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/axios/axios">
                             https://github.com/axios/axios
                         </a>
                     </li>
                     <li>React multi carousel -
-                        <a href="https://www.npmjs.com/package/react-multi-carousel">
+                        <a target="_blank" rel="noopener noreferrer"
+                           href="https://www.npmjs.com/package/react-multi-carousel">
                             https://www.npmjs.com/package/react-multi-carousel</a>
                     </li>
                     <li>Google Inter font -
-                        <a href="https://fonts.google.com/specimen/Inter">
+                        <a target="_blank" rel="noopener noreferrer" href="https://fonts.google.com/specimen/Inter">
                             https://fonts.google.com/specimen/Inter
                         </a>
                     </li>
@@ -57,6 +58,20 @@ const About = () => {
                             <li>Email: admin@admin</li>
                             <li>Password: admin</li>
                         </ul>
+                    </li>
+                </ul>
+                <p>GitHub:</p>
+                <ul>
+                    <li>Front-End -
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/gnunes1/CineGest_REACT">
+                            https://github.com/gnunes1/CineGest_REACT
+                        </a>
+                    </li>
+                    <li>Back-End -
+                        <a target="_blank" rel="noopener noreferrer"
+                           href="https://github.com/gnunes1/CineGest_REACT_backend">
+                            https://github.com/gnunes1/CineGest_REACT_backend
+                        </a>
                     </li>
                 </ul>
             </div>
